@@ -1,4 +1,4 @@
-<%- include("../layout/boilerplat.ejs") %>
+<% layout("layout/boilerplat.ejs") %>
 
     <body>
 
@@ -23,7 +23,6 @@
             </div>
 
             <div id="orderTotal" class="cart-summary">
-
                 <div class="summary-row">
                     <span>Subtotal:</span>
                     <span>₹<%= totalPrice.toFixed(2) %></span>
@@ -37,29 +36,25 @@
                     totalPrice
                     <span>₹<%= (totalPrice + (totalPrice * 0.1)).toFixed(2) %></span>
                 </div>
-                
-
             </div>
-
-            <div class="estimated-time">
+            <!-- <div class="estimated-time">
                 <h4>Your order has been sent to the kitchen! </h4>
                 <p id="estimatedTime">Pay before your food arrives and get 10% OFF!</p>
-            </div>
+            </div> -->
         </div>
 
         <div class="confirmation-actions">
             <a href="/cart" class="btn btn-outline">Back to Cart</a>
             <!-- <a href="payment.html" class="btn">Proceed to Payment</a> -->
             <button id="checkout-button" class="btn">Pay Now</button>
-
         </div>
         
         <script src="https://js.stripe.com/v3/"></script>
         <script>
             let totalPricetex = "<%= (totalPrice + (totalPrice * 0.1)).toFixed(2) %>";
         </script>
+
         <script>
-            
         document.getElementById("checkout-button").addEventListener("click", async () => {
             const response = await fetch("http://localhost:8080/create-checkout-session", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ amount:(totalPricetex-(totalPricetex*0.1)) }) });
             const session = await response.json();

@@ -3,13 +3,22 @@ const router = express.Router();
 const Food = require("../models/food");
 const Order = require("../models/order");
 
+router.use((req,res,next)=>{
+
+    if(req.user&&req.user._id=="68070c2e31750efff3ad1cd0"){
+        return next();
+    }else{
+        req.flash("error", " 404  page not axist");
+        res.redirect("menu");
+    }
+});
 // Admin Dashboard - Show all orders with populated table and food details
 router.get("/", async (req, res) => {
+    res.locals.tableNumber=null;
     try {
         const orders = await Order.find()
             .populate("table")
             .populate("items.food");
-
         res.render("admin/main", { orders });
     } catch (err) {
         console.error("Error loading admin dashboard:", err);

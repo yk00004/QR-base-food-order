@@ -1,0 +1,79 @@
+<% layout('layout/boilerplat.ejs') %>
+<style>
+    /* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.success-container {
+    text-align: center;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+    margin: 60px auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #9459f5;
+    font-size: 36px;
+}
+
+.order-details {
+    margin: 20px 0;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+.order-details h2 {
+    color: #333;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.thank-you-message {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.home-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #d646ef;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.home-button:hover {
+    background-color: #d646ef;
+}
+
+</style>
+<body>
+    <div class="success-container">
+        
+        <h1>Payment Successful</h1>
+        <p>Thank you for your purchase! We've successfully received your payment.</p>
+        <div class="order-details">
+            <h2>Your Order Details:</h2>
+            <p>Amount Paid: ₹<%= amount %></p>
+        </div>
+        <p class="thank-you-message">Your order is being processed. You will be notified once it's ready.</p>
+        <a href="/" class="home-button">Go to Home</a>
+    </div>
+</body>

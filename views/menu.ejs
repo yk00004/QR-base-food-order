@@ -1,4 +1,4 @@
-<%- include("./layout/boilerplat.ejs") %>
+<%layout("layout/boilerplat.ejs") %>
 <body>
     
         <div class="search-bar">
@@ -36,3 +36,19 @@
         </div>
 </body>
 
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentCategory = urlParams.get("category") || "all";
+
+    const tabs = document.querySelectorAll(".category-tab");
+
+    tabs.forEach(tab => {
+        const tabCategory = tab.dataset.category.toLowerCase();
+
+        if (tabCategory === currentCategory.toLowerCase()) {
+            tab.classList.add("active");
+        } else {
+            tab.classList.remove("active");
+        }
+    });
+</script>
